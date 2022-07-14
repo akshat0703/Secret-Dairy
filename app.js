@@ -1,3 +1,5 @@
+// https://secret-diary-2566.herokuapp.com/
+
 //requiring modules
 const express = require("express");
 const bodyParser = require("body-parser");
@@ -328,6 +330,10 @@ app.post("/logout", function (req, res) {
 
 
 // Server is ready to listen 
-app.listen(80, function () {
-    console.log("Server started on port 3000");
+let port = process.env.PORT;
+if(port == null || port ==""){
+  port = 3000;
+}
+app.listen(port, function() {
+  console.log("Server started Successfully");
 });
