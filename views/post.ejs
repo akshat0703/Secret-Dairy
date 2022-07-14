@@ -1,0 +1,61 @@
+<%- include('header2') %>
+<nav class="navbar navbar-expand-lg navbar-dark shadow-5-strong fixed-top " style="height: 70px; font-family: 'Montserrat', sans-serif;background-color: #272727;">
+  <a class="navbar-brand" style="font-family: 'Montserrat', sans-serif;font-size: 25px;color:#428EFB;" href="#">Secret Diary</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a id="mySecrets" class="nav-link" style="font-family: 'Montserrat', sans-serif;font-size: 19px;" href="/diary">My Secrets</a>
+      </li>
+      
+    </ul>
+    <form class="form-inline my-2 my-lg-0" method="post" action="/logout">
+      <button class="btn btn-outline-primary my-2 my-sm-0" style="font-family: 'Montserrat', sans-serif;font-size: 19px;" type="submit">Log Out</button>
+    </form>
+  </div>
+</nav>
+
+<div id="wrapper">
+
+  
+	<form id="paper" method="post" action="/delete" onSubmit="javascript:alert('Your Action is being processed.');">
+    <input type="text" id="postTitleInput" name="title" value="<%= titleName %>">
+    <input type="text" id="postTitleInput" name="date" value="<%= date %>">
+		<div id="margin" style="font-family: 'Montserrat', sans-serif;font-size: 25px;font-weight:500;">Title: <span style="color:#428EFB;font-family: 'Montserrat', sans-serif;font-size: 25px;font-weight:500;"><%= titleName %></span> <span style="
+      float:right;
+      color: #FF6600;
+      font-family: 'Montserrat', sans-serif;font-size: 25px;font-weight:500;">Dated: <%= date %></span></div>
+		<textarea id="text" name="text" rows="9" style="overflow: hidden; word-wrap: break-word; resize: none; height: 500px; "><%= content %></textarea>  
+		<br>
+		<button class="btn btn-outline-primary my-2 my-sm-0" style="font-family: 'Montserrat', sans-serif;font-size: 19px;float: right;" type="submit" name="btn" value="1">Delete</button>
+		<button class="btn btn-outline-primary my-2 my-sm-0" style="font-family: 'Montserrat', sans-serif;font-size: 19px;float: right ;margin-right:14px;" type="submit" name="btn" value="2">Update</button>
+	</form>
+
+</div>
+
+<div
+  class="d-flex flex-column flex-md-row text-center text-md-start justify-content-center py-4 px-4 px-xl-5"
+  style="position: fixed;
+  bottom: 0;
+  width: 100%;">
+  <div class="text-white text-center mb-3 mb-md-0">
+    Copyright © Akhil Nair 2022. All rights reserved.
+  </div>
+</div>
+
+  </div>
+</body>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/autosize.js/4.0.2/autosize.js"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+<script>
+    $(document).ready(function(){
+    $('#title').focus();
+    autosize($('#text'));
+});
+</script>
+</html>

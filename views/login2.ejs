@@ -1,0 +1,74 @@
+<%- include('header1') %>
+  <nav class="navbar navbar-expand-lg navbar-dark shadow-5-strong fixed-top " style="height: 70px; font-family: 'Montserrat', sans-serif">
+    <a class="navbar-brand" style="font-family: 'Montserrat', sans-serif;font-size: 25px;color:#428EFB;margin-left: 25px;letter-spacing: 1.5px;word-spacing: 2px;">Secret Diary</a>
+   
+  </nav>
+    <section class="vh-100">
+        <div class="container-fluid h-custom">
+          <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-md-9 col-lg-6 col-xl-5">
+              <img src="images/loginPage.png"
+                class="img-fluid" alt="Sample image">
+            </div>
+            <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+              <form action="/login" method="POST" id="loginForm">
+                     
+                <div class="divider d-flex align-items-center my-4">
+                    <h3 class="text-center fw-bold mx-3 mb-0" style="color:#428EFB;">Sign In</h3>
+                  </div>
+      
+                <!-- Email input -->
+                <div class="form-outline mb-4">
+                  <input type="email" id="form3Example3" class="form-control form-control-lg"
+                    placeholder="Enter a valid email address" name="username" data-index="1"/>
+                  <label class="form-label" for="form3Example3">Email address</label>
+                </div>
+      
+                <!-- Password input -->
+                <div class="form-outline mb-3">
+                  <input type="password" id="form3Example4" class="form-control form-control-lg"
+                    placeholder="Enter password" name="password" data-index="2"/>
+                  <label class="form-label" for="form3Example4">Password</label>
+                </div>
+      
+                
+      
+                <div class="text-center text-lg-start mt-4 pt-2">
+                  <button type="submit" class="btn btn-primary btn-lg"
+                    style="padding-left: 2.5rem; padding-right: 2.5rem;">Login</button>
+                  <h4 class="small fw-bold mt-2 pt-1 mb-0">Don't have an account? <a href="/register"
+                      class="link-danger">Register</a></h4>
+                </div>
+      
+              </form>
+            </div>
+          </div>
+        </div>
+        <div
+          class="d-flex flex-column flex-md-row text-center text-md-start justify-content-center py-4 px-4 px-xl-5"
+          style="background-color: #272727;">
+          <!-- Copyright -->
+          <div class="text-white text-center mb-3 mb-md-0">
+            Copyright © Akhil Nair 2022. All rights reserved.
+          </div>
+        </div>
+      </section>
+</body>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+  <script>
+    $('#loginForm').on('keydown', 'input', function (event) {
+    if (event.which == 13) {
+        event.preventDefault();
+        var $this = $(event.target);
+        var index = parseFloat($this.attr('data-index'));
+        if(index===2){
+          $('#loginForm').submit();
+        }
+        $('[data-index="' + (index + 1).toString() + '"]').focus();
+    }
+   });
+  </script>
+  
+</html>

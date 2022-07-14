@@ -1,0 +1,143 @@
+<%- include('header') %>
+  <nav class="navbar navbar-expand-lg navbar-dark shadow-5-strong fixed-top " style="height: 70px; font-family: 'Montserrat', sans-serif;background-color: #272727;">
+    <a class="navbar-brand" style="font-family: 'Montserrat', sans-serif;font-size: 25px;color:#428EFB;" href="#">Secret Diary</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a id="mySecrets" class="nav-link" style="font-family: 'Montserrat', sans-serif;font-size: 19px;" href="/diary">My Secrets</a>
+        </li>
+        
+      </ul>
+      <form class="form-inline my-2 my-lg-0" method="post" action="/logout">
+        <button class="btn btn-outline-primary my-2 my-sm-0" style="font-family: 'Montserrat', sans-serif;font-size: 19px;" type="submit">Log Out</button>
+      </form>
+    </div>
+  </nav>
+    <br><br><br>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <h1 style="
+    /* color: white; */
+    text-align: center;
+    font-size: -webkit-xxx-large;
+    font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 50px;
+    background: -webkit-linear-gradient( rgb(5 144 255),rgb(1 63 153));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+">Your Diary</h1>
+<br><br>
+<div class="wrapper">
+    <div class="icon facebook move">
+       <div class="tooltip ">
+          Add
+       </div>
+       <span>
+           <form action="/write" method="get">
+               <button class="move2" type="submit" name="list" id="addButton">+</button>
+           </form>
+       </span>
+    </div>
+ </div>
+
+<br><br>
+    
+    <div class="section_our_solution">
+        <div class="row" style="display: flex;flex-flow:column wrap;">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <div class="our_solution_category">
+                    <div class="solution_cards_box" style="margin:15px;">
+                        <% for(let i=0;i < newListItems.length;i+=3){  %>
+                        <div class="solution_card">
+                            <div class="hover_color_bubble"></div>
+
+                            <div class="solu_title">
+                                <h3><%= newListItems[i].title %></h3>
+                            </div>
+                            <div class="solu_description">
+                                <p>
+                                    <%= newListItems[i].content.substr(0,200)+"..." %>
+                                </p>
+                                <button type="button" class="read_more_btn"><a href="/<%=newListItems[i].title%>" style="text-decoration: none;">Read More</a></button>
+                            </div>
+                        </div>
+                        <% } %>
+                    </div>
+                    <!--  -->
+                    <div class="solution_cards_box sol_card_top_3" style="margin:15px;">
+                        <% for(let i=1;i < newListItems.length;i+=3){  %>
+                        <div class="solution_card">
+                            <div class="hover_color_bubble"></div>
+
+                            <div class="solu_title">
+                                <h3><%= newListItems[i].title %></h3>
+                            </div>
+                            <div class="solu_description">
+                                <p>
+                                  <%= newListItems[i].content.substr(0,200)+"..." %>
+                                </p>
+                                <button type="button" class="read_more_btn"><a href="/<%=newListItems[i].title%>" style="text-decoration: none;">Read More</a></button>
+                            </div>
+                        </div>
+                        
+                        <% } %>
+                    </div>
+                    <div class="solution_cards_box" style="margin:15px;">
+                        <% for(let i=2;i < newListItems.length;i+=3){  %>
+                        <div class="solution_card">
+                            <div class="hover_color_bubble"></div>
+
+                            <div class="solu_title">
+                                <h3><%= newListItems[i].title %></h3>
+                            </div>
+                            <div class="solu_description">
+                                <p><%= newListItems[i].content.substr(0,200)+"..." %></p>
+                                <button type="button" class="read_more_btn"><a href="/<%=newListItems[i].title%>" style="text-decoration: none;">Read More</a></button>
+                            </div>
+                        </div>
+
+                        <% } %>
+                    </div>
+                    <!--  -->
+                </div>
+            </div>
+        </div>
+    </div>
+    
+  </div>
+  <div
+  class="d-flex flex-column flex-md-row text-center text-md-start justify-content-center py-4 px-4 px-xl-5"
+  style="position: fixed;
+  bottom: 0;
+  width: 100%;"
+  >
+  <!-- Copyright -->
+  <div class="text-white text-center mb-3 mb-md-0">
+    Copyright © Akhil Nair 2022. All rights reserved.
+  </div>
+</div>
+
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/autosize.js/4.0.2/autosize.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+    integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+    crossorigin="anonymous"></script>
+<script>
+    $(document).ready(function () {
+        $('#title').focus();
+        autosize($('#text'));
+    });
+</script>
+
+</html>
