@@ -236,12 +236,12 @@ app.get("/:postName", function (req, res) {
             if (foundList) {
                 foundList.items.forEach(function (diary) {
                     const storedTitle = _.lowerCase(diary.title);
-
                     if (storedTitle === requestedTitle) {
                         res.render("post", {
                             titleName: diary.title,
                             content: diary.content,
-                            date: diary.date
+                            date: diary.date,
+                            diaryId:diary._id
                         });
                     }
                 });
@@ -261,20 +261,24 @@ app.get("/:postName", function (req, res) {
 app.post("/delete",function(req,res){
 
     const postContent=req.body.text;
-    const postTitle=req.body.title;
-    const postDate=req.body.date;
     const buttonPressed = req.body.btn;
-    if(buttonPressed === "1"){ //delete post
+    const diaryId = req.body.diaryId;
+    console.log(req.body);
 
     List.findOne({id:req.user.id}).then(foundList=>{
         
             if(foundList){
-
+                console.log("---->",diaryId);
+                console.log("&&&&&")
                 for( var i = 0; i < foundList.items.length; i++){ 
-                    
-                    if ( foundList.items[i].content === postContent && foundList.items[i].title === postTitle && foundList.items[i].date===postDate) { 
-                        // console.log("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&");
-                        foundList.items.splice(i, 1); 
+                    console.log(foundList.items[i]._id);
+                    if(diaryId === foundList.items[i]._id.toString()){
+                        if(buttonPressed === "1"){ //delete post
+                            foundList.items.splice(i, 1); 
+                        }
+                        else{ //update post
+                            foundList.items[i].content = postContent;
+                        }
                         break;
                     }
                     
@@ -286,29 +290,8 @@ app.post("/delete",function(req,res){
             }
         }
     )
-    }else{  // update post content
-        List.findOne({id:req.user.id}).then(foundList=>{
-        
-            if(foundList){
-
-                for( var i = 0; i < foundList.items.length; i++){ 
-                    
-                    if (foundList.items[i].title === postTitle && foundList.items[i].date===postDate) { 
-                        foundList.items[i].content = postContent; 
-                        break;
-                    }
-                    
-                }
-
-
-                List.updateOne({id:req.user.id},foundList).catch(err=>{console.log(err)});
-                
-            }
-        }
-    )
-}
-// Once the action is performed redirect to diary page 
-res.redirect("/diary");  
+    // Once the action is performed redirect to diary page 
+    res.redirect("/diary");  
 // location.reload();
 });
 

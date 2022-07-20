@@ -102,3 +102,9 @@
     display: none;
   }
   
+  @media only screen and (max-width: 768px) {
+    nav {
+        background-color: white;
+      margin-bottom: 500px;
+    }
+  }

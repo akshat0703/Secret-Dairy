@@ -69,6 +69,15 @@
         $('[data-index="' + (index + 1).toString() + '"]').focus();
     }
    });
+   $("nav").ready(function(){
+
+    if ($(window).width() <= 767) {  
+      $("nav").addClass("bg-dark");
+    } 
+    if ($(window).width() > 767) {  
+      $("nav").removeClass("bg-dark");
+    }       
+    });
   </script>
   
 </html>

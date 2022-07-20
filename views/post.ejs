@@ -24,6 +24,7 @@
 	<form id="paper" method="post" action="/delete" onSubmit="javascript:alert('Your Action is being processed.');">
     <input type="text" id="postTitleInput" name="title" value="<%= titleName %>">
     <input type="text" id="postTitleInput" name="date" value="<%= date %>">
+    <input type="text" id="postTitleInput" name="diaryId" value="<%= diaryId %>">
 		<div id="margin" style="font-family: 'Montserrat', sans-serif;font-size: 25px;font-weight:500;">Title: <span style="color:#428EFB;font-family: 'Montserrat', sans-serif;font-size: 25px;font-weight:500;"><%= titleName %></span> <span style="
       float:right;
       color: #FF6600;
@@ -40,7 +41,8 @@
   class="d-flex flex-column flex-md-row text-center text-md-start justify-content-center py-4 px-4 px-xl-5"
   style="position: fixed;
   bottom: 0;
-  width: 100%;">
+  width: 100%;
+  z-index: -1;">
   <div class="text-white text-center mb-3 mb-md-0">
     Copyright © Akhil Nair 2022. All rights reserved.
   </div>
