@@ -32,7 +32,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 //connecting to mongoDB database
-mongoose.connect("mongodb+srv://admin_akshat:"+`${process.env.DB_PASSWORD}`+"@cluster0.c2zq5bl.mongodb.net/diaryDB", { useNewUrlParser: true });
+mongoose.connect("mongodb+srv://admin_akshat:abcd1234@cluster0.c2zq5bl.mongodb.net/diaryDB", { useNewUrlParser: true });
 
 
 // User schema 
