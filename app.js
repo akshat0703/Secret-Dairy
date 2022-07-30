@@ -2,6 +2,7 @@
 
 //requiring modules
 const express = require("express");
+require("dotenv").config();
 const bodyParser = require("body-parser");
 const ejs = require("ejs");
 const _ = require("lodash");
@@ -31,7 +32,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 //connecting to mongoDB database
-mongoose.connect("mongodb+srv://admin-akhil:Akhil_nair1@cluster0.hsaivef.mongodb.net/diaryDB", { useNewUrlParser: true });
+mongoose.connect("mongodb+srv://admin_akshat:"+`${process.env.DB_PASSWORD}`+"@cluster0.c2zq5bl.mongodb.net/diaryDB", { useNewUrlParser: true });
 
 
 // User schema 
@@ -317,6 +318,7 @@ let port = process.env.PORT;
 if(port == null || port ==""){
   port = 3000;
 }
+// console.log(port);
 app.listen(port, function() {
   console.log("Server started Successfully");
 });
